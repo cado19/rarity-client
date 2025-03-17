@@ -45,15 +45,15 @@
 
         $details = [$first_name, $last_name, $email, $id_type, $id_number, $dl_number, $dl_expiry, $tel, $residential_address, $work_address, $date_of_birth, $account_id];
 
-        // $result = save_client($first_name, $last_name, $email, $id_type, $id_number, $dl_number, $dl_expiry, $tel, $residential_address, $work_address, $date_of_birth, );
+        $result = save_client($first_name, $last_name, $email, $id_type, $id_number, $dl_number, $dl_expiry, $tel, $residential_address, $work_address, $date_of_birth, );
 
-        // if ($result == "Success") {
-        //     $msg = "Successfully registered";
-        //     header("Location: index.php?page=client/register/success&msg=$msg");
-        // } else {
-        //     $err_msg = "An error occured";
-        //     header("Location: index.php?page=client/register/new&err_msg=$err_msg");
-        // }
+        if ($result == "Success") {
+            $msg = "Successfully registered";
+            header("Location: index.php?page=client/success&msg=$msg");
+        } else {
+            $err_msg = "An error occured";
+            header("Location: index.php?page=client/new&err_msg=$err_msg");
+        }
         // $log->info($result);
     } else {
         $msg = "Unauthorized activity";
