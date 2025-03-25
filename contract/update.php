@@ -29,7 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_id = (string) $id;
     $status = "signed";
 
-    $sig_string     = $_POST['signature'];
+    $sig_string = $_POST['signature'];
+    $sig_string = str_replace('data:image/png;base64,', '', $sig_string);
+    $sig_string = str_replace(' ', '+', $sig_string);
+    $sig_string = base64_decode($sig_string);
+
     $destination    = "signatures/";
     $nama_file      = "signature_" . date("his") . ".png";
     $file_to_upload = $destination . "signature_" . date("his") . ".png";
