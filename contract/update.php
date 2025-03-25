@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = "signed";
 
     $sig_string = $_POST['signature'];
-    $sig_string = str_replace('data:image/png;base64,', '', $sig_string);
-    $sig_string = str_replace(' ', '+', $sig_string);
-    $sig_string = base64_decode($sig_string);
+    // $sig_string = str_replace('data:image/png;base64,', '', $sig_string);
+    // $sig_string = str_replace(' ', '+', $sig_string);
+    // $sig_string = base64_decode($sig_string);
 
     $destination    = "signatures/";
     $nama_file      = "signature_" . date("his") . ".png";
@@ -46,13 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute([$nama_file, $status, $new_id]);
 
     // fetch id of booking from contracts for redirect
-    $sql1  = "SELECT booking_id FROM contracts WHERE id = ?";
-    $stmt1 = $con->prepare($sql1);
-    $stmt1->execute([$new_id]);
-    $booking_id = $stmt1->fetch();
+    // $sql1  = "SELECT booking_id FROM contracts WHERE id = ?";
+    // $stmt1 = $con->prepare($sql1);
+    // $stmt1->execute([$new_id]);
+    // $booking_id = $stmt1->fetch();
 
     // redirect to booking show page
-    // header("Location: ../index.php?page=bookings/show&id=" . $booking_id['booking_id']);
+    header("Location: ../index.php?page=contract/success");
 
     // CHANGE BOOKING TO ACTIVE
 }

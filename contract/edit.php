@@ -40,7 +40,7 @@
 
     $new_id = $contract_id['id'];
 
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/contracts/update.php";
+    $path = $_SERVER['DOCUMENT_ROOT'] . "/contract/update.php";
 
     // get page url
     // Program to display complete URL
