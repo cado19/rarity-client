@@ -36,7 +36,14 @@
 				<tbody>
 					<tr><td><b>CASH</b></td><td><b>CHEQUE</b></td></tr>
 					<tr><td><b>SHS PER DAY</b></td><td><b>CAR MAKE</b></td><td><b>CAR MODEL</b></td></tr>
-					<tr><td><?php show_numeric_value($contract, 'daily_rate'); ?></td><td><?php show_value($contract, 'make'); ?></td><td><?php show_value($contract, 'model'); ?></td></tr>
+					<tr><td>
+						<?php if ($contract['custom_rate'] > 0): ?>
+							<?php show_numeric_value($contract, 'custom_rate'); ?>
+						<?php else: ?>
+							<?php show_numeric_value($contract, 'daily_rate'); ?>
+						<?php endif; ?>
+
+						</td><td><?php show_value($contract, 'make'); ?></td><td><?php show_value($contract, 'model'); ?></td></tr>
 					<tr><td><b>CAR  CHECKED IN AT</b></td></tr>
 					<tr><td><b>DATE IN</b><?php echo " "; ?><?php show_value($contract, 'end_date'); ?></td><td><b>TIME IN</b><?php echo " "; ?><?php show_value($contract, 'end_time'); ?></td></tr>
 					<tr><td><b>DATE OUT</b><?php echo " "; ?><?php show_value($contract, 'start_date'); ?></td><td><b>TIME OUT</b><?php echo " "; ?><?php show_value($contract, 'start_time'); ?></td></tr>
@@ -194,7 +201,7 @@ guarantee shall be given.</P>
 	</div>
 	<div class="row">
 		<div class="col-6">
-			<p>Hirer's Signature: <img src="contracts/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img"></p>
+			<p>Hirer's Signature: <img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img"></p>
 		</div>
 		<div class="col-6">
 			<p>Date:<?php show_value($contract, 'start_date'); ?></p>
