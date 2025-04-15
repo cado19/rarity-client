@@ -1,15 +1,15 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST['id'];
     if (empty($_POST['image'])) {
         $err_msg = "No image was taken";
-        header("Location: index.php?page=client/register/profile_form&err_msg=$err_msg");
+        header("Location: index.php?page=client/profile_form&err_msg=$err_msg&id=$id");
         exit;
     }
 
     $img = $_POST['image'];
-    $id  = $_POST['id'];
 
-    $folderPath = "customers/profile/";
+    $folderPath = "client/profile/";
 
     $image_parts = explode(";base64,", $img);
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $con->prepare($sql);
     $stmt->execute([$fileName, $id]);
     $msg = "Successfully updated your peofile";
-    header("Location: index.php?page=client/register/success&msg=$msg");
+    header("Location: index.php?page=client/success&msg=$msg");
     exit;
 
     // $err_msg = "There was an error uploading your image. Try again";
@@ -39,6 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     print_r($fileName);
 } else {
     $msg = "Unauthorized activity";
-    header("Location: index.php?page=client/register/profile_form&err_msg=$msg");
+    header("Location: index.php?page=client/profile_form&err_msg=$msg");
     exit;
 }

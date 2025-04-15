@@ -25,7 +25,7 @@
 	        	</div>
 
 	        	<div class="panel-body">
-	        		<form class="form-horizontal" method="POST" action="index.php?page=client/register/dl_process" enctype="multipart/form-data">
+	        		<form class="form-horizontal" method="POST" action="index.php?page=client/dl_process" enctype="multipart/form-data">
 
 					    <input type="hidden" name="id" value="<?php echo $id ?>">
 		        		<div class="form-group">

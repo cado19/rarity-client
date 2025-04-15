@@ -29,6 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_id = (string) $id;
     $status = "signed";
 
+    if (empty($_POST['reason'])) {
+        $reason_err = "Reason Required";
+        header("Location: ../index.php?page=contract/edit&err_msg=$reason_err&id=$id");
+        exit;
+    }
+
+    $reason = $_POST['reason'];
+
     $sig_string = $_POST['signature'];
     // $sig_string = str_replace('data:image/png;base64,', '', $sig_string);
     // $sig_string = str_replace(' ', '+', $sig_string);
@@ -41,9 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents($file_to_upload, file_get_contents($sig_string));
 
     //SQL TO UPDATE CONTRACT
-    $sql  = "UPDATE contracts SET signature = ?, status = ? WHERE id = ?";
+    $sql  = "UPDATE contracts SET signature = ?, status = ?, reason = ? WHERE id = ?";
     $stmt = $con->prepare($sql);
-    $stmt->execute([$nama_file, $status, $new_id]);
+    $stmt->execute([$nama_file, $status, $reason, $new_id]);
 
     // fetch id of booking from contracts for redirect
     // $sql1  = "SELECT booking_id FROM contracts WHERE id = ?";

@@ -90,6 +90,17 @@
 <body>
     <div class="container">
         <div class="row h-100 d-flex justify-content-center align-items-center">
+            <?php if (isset($_GET['reason_err'])): ?>
+
+                <!-- Flash Message -->
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Error!</strong>                                                                                                                                                                     <?php echo $_GET['reason_err']; ?>.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+            <?php endif; ?>
             <div class="col-8">
                 <div class="card shadow">
                     <div class="card-header">
@@ -105,10 +116,21 @@
                                     <div id="note" onmouseover="my_function();">The signature should be inside box</div>
                                     <canvas id="the_canvas" width="350px" height="100px"></canvas>
                                 </div>
+                                <div class="reason">
+                                    <label>
+                                      <input type="radio" name="reason" value="Private"> Private
+                                    </label><br>
+                                    <label>
+                                      <input type="radio" name="reason" value="Leisure"> Leisure
+                                    </label><br>
+                                    <label>
+                                      <input type="radio" name="reason" value="Pleasure"> Pleasure
+                                    </label><br>
+                                </div>
                                 <div style="margin:10px;">
                                     <input type="hidden" id="signature" name="signature">
                                     <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear"><span class="glyphicon glyphicon-remove"></span> Clear</button>
-                                    <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png"><span class="glyphicon glyphicon-ok"></span> Save as PNG</button>
+                                    <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png"><span class="glyphicon glyphicon-ok"></span> Save</button>
                                 </div>
                             </div>
                         <form>
@@ -168,5 +190,6 @@ function my_function(){
       alert("Copied the text: " + copyText.value);
     })
 </script>
+<?php include_once 'partials/client-footer.php'; ?>
 </body>
 </html>

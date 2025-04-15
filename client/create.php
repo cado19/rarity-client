@@ -6,28 +6,28 @@
         //VALIDATIONS
         if (empty($_POST['first_name'])) {
             $first_name_err = "Required";
-            header("Location: index.php?page=client/register/new&first_name_err=$first_name_err");
+            header("Location: index.php?page=client/new&first_name_err=$first_name_err");
             exit;
         }
         if (empty($_POST['last_name'])) {
             $last_name_err = "Required";
-            header("Location: index.php?page=client/register/new&last_name_err=$last_name_err");
+            header("Location: index.php?page=client/new&last_name_err=$last_name_err");
             exit;
         }
         if (empty($_POST['email'])) {
             $email_err = "Required";
-            header("Location: index.php?page=client/register/new&email_err=$email_err");
+            header("Location: index.php?page=client/new&email_err=$email_err");
             exit;
         }
         if (empty($_POST['id_type'])) {
             $id_type_err = "Required";
-            header("Location: index.php?page=client/register/new&id_type_err=$id_type_err");
+            header("Location: index.php?page=client/new&id_type_err=$id_type_err");
             exit;
         }
 
         if (empty($_POST['date_of_birth'])) {
             $date_of_birth_err = "Required";
-            header("Location: index.php?page=client/register/new&date_of_birth_err=$date_of_birth_err");
+            header("Location: index.php?page=client/new&date_of_birth_err=$date_of_birth_err");
             exit;
         }
 
