@@ -43,13 +43,14 @@
             <div id="payment-details">
                 <h3>PAYMENT DETAILS: </h3>
 
-                <p><b>BANK NAME:</b> NCBA BANK</p>
-                <p><b>BRANCH:</b> WESTLANDS MALL</p>
-                <p><b>Account Name:</b> SESOM VENTURES LTD</p>
-                <p><b>ACCOUNT NUMBER:</b> 8468960011 (KES)</p>
-                <p><b>ACCOUNT NUMBER:</b> 8468960027 (USD)</p>
-                <p><b>S.W.I.F.T BIC:</b> CBAFKENX</p>
-                <p><b>BRANCH CODE:</b> 105</p>
+                <p><b>BANK NAME:</b> I&M BANK</p>
+                <p><b>BRANCH:</b> VALLEY ARCADE</p>
+                <p><b>Account Name:</b> RARITY TRAVEL LTD</p>
+                <p><b>ACCOUNT NUMBER:</b> 01605023636350 (KES)</p>
+                <p><b>ACCOUNT NUMBER:</b> 01605023631250 (USD)</p>
+                <p><b>S.W.I.F.T BIC:</b> IMBLKENA</p>
+                <p><b>BRANCH CODE:</b> 016</p>
+                <p><b>BANK CODE:</b> 057</p>
                 <p><b>MPESA PAYBILL:</b> 400200</p>
                 <p><b>ACCOUNT:</b> 40044610</p>
 
