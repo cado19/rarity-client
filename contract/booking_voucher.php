@@ -55,7 +55,7 @@
                 <p><b>ACCOUNT:</b> 40044610</p>
 
                 <p><b>SECURE ONLINE PAYMENT PORTAL:</b></p>
-                <a href="https://payments.pesapal.com/rarityrentacar" class="btn btn-outline-success" target="_blank">Pay Now</a>
+                <a href="index.php?page=payment/new&id=<?php echo $id; ?>" class="btn btn-outline-success" target="_blank">Pay Now</a>
             </div>
         </div>
     </div>

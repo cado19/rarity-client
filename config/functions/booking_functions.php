@@ -118,6 +118,51 @@ function cancelled_bookings()
     return $res;
 }
 
+// get booking number
+function get_booking_no($booking_id)
+{
+    global $con;
+    global $res;
+
+    try {
+        $con->beginTransaction();
+
+        $sql  = "SELECT booking_no FROM bookings WHERE id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$booking_id]);
+        $res = $stmt->fetch();
+
+        $con->commit();
+    } catch (Exception $e) {
+        $con->rollback();
+    }
+
+    return $res;
+}
+
+// get client details needed for booking
+function client_from_booking($booking_id)
+{
+    global $con;
+    global $res;
+
+    try {
+
+        $con->beginTransaction();
+
+        $sql  = "SELECT c.id AS customer_id, c.first_name AS customer_first_name, c.last_name AS customer_last_name, c.email AS customer_email, c.phone_no AS customer_phone_no, b.total, b.status, b.booking_no FROM customer_details c INNER JOIN bookings b ON c.id = b.customer_id WHERE b.id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->execute([$booking_id]);
+        $res = $stmt->fetch();
+
+        $con->commit();
+
+    } catch (Exception $e) {
+        $con->rollback();
+    }
+    return $res;
+}
+
 function partner_bookings($partner_id)
 {
     global $con;
@@ -140,7 +185,8 @@ function partner_bookings($partner_id)
     return $res;
 }
 
-function bookings_endng_this_week(){
+function bookings_endng_this_week()
+{
     global $con;
     global $res;
     // $status = "cancelled";
@@ -159,7 +205,7 @@ function bookings_endng_this_week(){
         $con->rollback();
     }
 
-    return $res; 
+    return $res;
 }
 // function to get all active bookings created by agents
 function active_agent_bookings()
@@ -557,6 +603,8 @@ function booking_voucher_details($id)
 
     return $res;
 }
+
+
 
 function booked_vehicles()
 {
