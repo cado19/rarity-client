@@ -61,7 +61,7 @@
     // location to the URL
     $link .= $_SERVER['PHP_SELF'];
 
-    $link .= "?page=contracts/edit&id=${id}";
+    $link .= "?page=contract/edit&id=${id}";
 
     // echo $new_id;
 
@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <a href="index.php?page=contracts/updated_contract&id=<?php echo $id; ?>" class="btn btn-success" target="_blank">View contract</a>
+                <a href="index.php?page=contract/updated_contract&id=<?php echo $id; ?>" class="btn btn-success" target="_blank">View contract</a>
                 <a href="index.php?page=bookings/show&id=<?php echo $id; ?>" class="btn btn-warning">Back to booking</a>
             </div>
         </div>
