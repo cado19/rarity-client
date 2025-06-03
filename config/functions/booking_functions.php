@@ -591,7 +591,7 @@ function booking_voucher_details($id)
     try {
         $con->beginTransaction();
 
-        $sql  = "SELECT b.id, b.booking_no, b.custom_rate, b.total, b.start_date, b.start_time, b.end_date, b.end_time, b.created_at, vb.make, vb.model, vb.number_plate, vp.daily_rate, c.first_name, c.last_name FROM bookings b INNER JOIN vehicle_basics vb ON b.vehicle_id = vb.id INNER JOIN customer_details c ON b.customer_id = c.id INNER JOIN vehicle_pricing vp ON b.vehicle_id = vp.vehicle_id WHERE b.id = ?";
+        $sql  = "SELECT b.id, b.booking_no, b.custom_rate, b.driver_fee, b.total, b.start_date, b.start_time, b.end_date, b.end_time, b.created_at, vb.make, vb.model, vb.number_plate, vp.daily_rate, c.first_name, c.last_name, d.first_name, d.last_name FROM bookings b INNER JOIN vehicle_basics vb ON b.vehicle_id = vb.id INNER JOIN customer_details c ON b.customer_id = c.id INNER JOIN vehicle_pricing vp ON b.vehicle_id = vp.vehicle_id INNER JOIN drivers d ON b.driver_id = d.id WHERE b.id = ?";
         $stmt = $con->prepare($sql);
         $stmt->execute([$id]);
         $res = $stmt->fetch();
