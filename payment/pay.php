@@ -4,7 +4,7 @@
 <h2>Payment form</h2>
 <div class="row-fluid">
     <div class="span4 text-center">
-        <img src="assets/kizusi_logo_white.png" class="img-circle profile-avatar" alt="User avatar">
+        <img src="assets/rarity_contract_top.png">
     </div>
 
     <div id="rightcol2" class="span8">
