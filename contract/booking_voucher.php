@@ -42,6 +42,8 @@
                 <p><b>Daily Rate:</b><?php echo " "; ?><del><?php show_numeric_value($voucher, 'daily_rate'); ?>/-</del> <ins><?php show_numeric_value($voucher, 'custom_rate'); ?>/-</ins></p>
             <?php endif; ?>
 
+            <p><b>Fuel Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'fuel'); ?>/-</p>
+
             <?php if($voucher['driver_fee'] > 0): ?>
               <p><b>Driver Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'driver_fee'); ?>/-</p>
               <p><b>Vehicle Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'total'); ?>/-</p>
