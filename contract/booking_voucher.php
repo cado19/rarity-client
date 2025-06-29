@@ -13,7 +13,7 @@
     $subtotal = 0;
 
     if ($voucher['driver_fee'] > 0) {
-      $subtotal = $voucher['driver_fee'] + $voucher['total'];
+        $subtotal = $voucher['driver_fee'] + $voucher['total'];
     }
 
 ?>
@@ -33,7 +33,7 @@
         <div class="col-xs-12 col-sm-9 col-6">
             <h2 class="text-center">Booking Voucher</h2>
             <p><b>Booking No:</b><?php echo " "; ?><?php show_value($voucher, 'booking_no'); ?></p>
-            <p><b>Client:</b><?php echo " "; ?><?php show_value($voucher, 'first_name'); ?><?php echo " "; ?><?php show_value($voucher, 'last_name'); ?></p>
+            <p><b>Client:</b><?php echo " "; ?><?php show_value($voucher, 'customer_first_name'); ?><?php echo " "; ?><?php show_value($voucher, 'customer_last_name'); ?></p>
             <p><b>Vehicle:</b><?php echo " "; ?><?php show_value($voucher, 'make'); ?><?php echo " "; ?><?php show_value($voucher, 'model'); ?> </p>
             <p><b>Registration:</b><?php echo " "; ?><?php show_value($voucher, 'number_plate'); ?></p>
             <?php if ($voucher['custom_rate'] == 0): ?>
@@ -44,13 +44,13 @@
 
             <p><b>Fuel Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'fuel'); ?>/-</p>
 
-            <?php if($voucher['driver_fee'] > 0): ?>
+            <?php if ($voucher['driver_fee'] > 0): ?>
               <p><b>Driver Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'driver_fee'); ?>/-</p>
               <p><b>Vehicle Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'total'); ?>/-</p>
               <p><b>Subtotal:</b><?php echo " "; ?><?php echo number_format($subtotal); ?>/-</p>
             <?php endif; ?>
 
-            <?php if($voucher['driver_fee'] == 0): ?>
+            <?php if ($voucher['driver_fee'] == 0): ?>
               <p><b>Subtotal:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'total'); ?>/- </p>
             <?php endif; ?>
 
