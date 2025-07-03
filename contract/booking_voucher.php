@@ -13,8 +13,14 @@
     $subtotal = 0;
 
     if ($voucher['driver_fee'] > 0) {
-        $subtotal = $voucher['driver_fee'] + $voucher['total'];
+        $subtotal += $voucher['driver_fee'];
     }
+
+    if ($voucher['fuel_fee'] > 0) {
+        $subtotal += $voucher['fuel_fee'];
+    }
+
+    $subtotal += $voucher['total'];
 
 ?>
 
@@ -47,12 +53,9 @@
             <?php if ($voucher['driver_fee'] > 0): ?>
               <p><b>Driver Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'driver_fee'); ?>/-</p>
               <p><b>Vehicle Fee:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'total'); ?>/-</p>
-              <p><b>Subtotal:</b><?php echo " "; ?><?php echo number_format($subtotal); ?>/-</p>
             <?php endif; ?>
 
-            <?php if ($voucher['driver_fee'] == 0): ?>
-              <p><b>Subtotal:</b><?php echo " "; ?><?php show_numeric_value($voucher, 'total'); ?>/- </p>
-            <?php endif; ?>
+            <p><b>Subtotal:</b><?php echo " "; ?><?php show_numeric_value($subtotal); ?>/- </p>
 
             <p><b>Start Date:</b><?php echo " "; ?><?php echo date("l jS \of F Y", $start_date); ?></p>
             <p><b>End Date:</b><?php echo " "; ?><?php echo date("l jS \of F Y", $end_date); ?> </p>
