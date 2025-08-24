@@ -1,0 +1,2 @@
+.env
+config/db_conn.php
