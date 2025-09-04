@@ -1,3 +1,4 @@
 .env
 vendor/
 db_credentials/
+contract/signatures/
