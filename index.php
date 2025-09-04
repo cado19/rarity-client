@@ -1,5 +1,11 @@
 <?php
 include_once "config/functions.php";
+
+require 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$apiKey = $_ENV['EXCHANGE_RATE_KEY'];
 // include_once "config/logger.php";
 // include 'partials/header.php';
 
