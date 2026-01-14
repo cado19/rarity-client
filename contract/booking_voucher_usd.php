@@ -4,7 +4,25 @@
     $req_url = "https://v6.exchangerate-api.com/v6/$apiKey/latest/KES";
 
     // fetch exchange rate data
-    $response_json = file_get_contents($req_url);
+    // $response_json = file_get_contents($req_url);
+
+    $ch = curl_init($req_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // optional: timeout in seconds
+    $response_json = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo "cURL error: " . curl_error($ch);
+        exit;
+    }
+
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($http_code !== 200 || ! $response_json) {
+        echo "Failed to fetch exchange rate (HTTP $http_code)";
+        exit;
+    }
 
     $page = "Voucher";
     include_once 'partials/client-header.php';
@@ -23,7 +41,7 @@
     $fuel_fee    = $voucher['fuel'];
     $daily_rate  = $voucher['daily_rate'];
     $custom_rate = $voucher['custom_rate'];
-    $total = $voucher['total'];
+    $total       = $voucher['total'];
 
     if ($voucher['driver_fee'] > 0) {
         $subtotal += $voucher['driver_fee'];

@@ -202,7 +202,7 @@ function save_customer($first_name, $last_name, $email, $id_type, $id_number, $d
 
         $sql  = "INSERT INTO customer_details (first_name, last_name, email, id_type, id_no, dl_no, dl_expiration, phone_no, residential_address, work_address, date_of_birth) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $con->prepare($sql);
-        if ($stmt->execute([$first_name, $last_name, $email, $id_type, $id_number, $dl_number, $dl_expiry, $tel, $residential_address, $work_address, $date_of_birth])) {
+        if ($stmt->execute([$first_name, $last_name, $email, $id_type, $id_number, $dl_number, $dl_expiry ?: null, $tel, $residential_address, $work_address, $date_of_birth ?: null])) {
             $res = "Success";
         } else {
             $res = "Unsuccessful";
@@ -211,6 +211,8 @@ function save_customer($first_name, $last_name, $email, $id_type, $id_number, $d
         $con->commit();
     } catch (Exception $e) {
         $con->rollback();
+        error_log("Save client failed: " . $e->getMessage());
+        $res = "Error: " . $e->getMessage();
     }
 
     return $res;
@@ -236,6 +238,8 @@ function save_client($first_name, $last_name, $email, $id_type, $id_number, $dl_
         $con->commit();
     } catch (Exception $e) {
         $con->rollback();
+        error_log("Save client failed: " . $e->getMessage());
+        $res = "Error: " . $e->getMessage();
     }
 
     return $res;
