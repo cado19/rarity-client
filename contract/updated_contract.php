@@ -7,9 +7,13 @@
     $contract = contract($id);
     $created  = strtotime($contract['created_at']);
     // $log->info('contract:', $contract);
+    // echo json_encode($contract);
 
 ?>
+<script>
+	console.log(<?php echo json_encode($contract); ?>);
 
+</script>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -170,7 +174,7 @@ responsible for replacing it.</P>
  He will not drive (and ensure that any unauthorized driver will not drive) the vehicle whilst under the influence of alcohol, Hallucinations, drugs narcotic,
 barbiturates and any other substances impairing the driver’s consciousness or ability to control the vehicle. The vehicle will be driven skillfully and all
 Traffic Laws and Rules and the provisions of the Highway code shall at all times be complied with and observed.</P>
-		<P><b>The vehicle shall</b></P>
+		<p><b>The vehicle shall</b></p>
 		<P>a. Not be overloaded or carry more passengers than its passenger capacity specified on the insurance license on the windscreen</P>
 		<P>b. he vehicle will be driven by the hirer or any other driver named overleaf who must have a current bona fides driver’s license for a minimum of 2 years and must be not less than 23 years and not more than 70 years of age.</P>
 		<P> c. The vehicle will be kept locked and secured when packed and every precaution will be taken to avoid theft of it or any item in it and damage.</P>
@@ -190,9 +194,46 @@ Traffic Laws and Rules and the provisions of the Highway code shall at all times
 		<P>b) Any breakdown or damage to the vehicle otherwise than by collision,</P>
 		<P>c) Injuries or loss to the hirer or driver or the passengers.</P>
 		<P> d) Burst tyres, stolen, lost spare wheel, damaged OR broken windscreen or glasses, damaged rims, tools (including jack & handle)</P>
-		<P>All cars are insured. But in all cases the first Ksh…………<?php show_numeric_value($contract, 'vehicle_excess'); ?>……. Excess premiums depending on the vehicle hired on every claim are
- the responsibility of the hirer.</P>
-		<P><b>IMPORTANT</b></P>
+		<P>All cars are insured. But in all cases the first Ksh…………<?php $contract['cdw'] == "false" && show_numeric_value($contract, 'vehicle_excess'); ?>……. Excess premiums depending on the vehicle hired on every claim are the responsibility of the hirer. (NON-CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.100,000, Standard Saloon- Kes.150,000, Mid-SUV- 
+		Kes. 250,000, SUV-Kes.400,000, Luxury SUV-Kes. 600,000). </P>
+
+		<div class="row">
+			<div class="col-6">
+				<p>Hirer's Signature: 
+					<?php if($contract['cdw'] == "false"): ?>
+						<img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img">
+					<?php endif; ?>
+				</p>
+			</div>
+			<div class="col-6">
+				<p>Date:
+					<?php if($contract['cdw'] == "false"): ?>
+						<?php show_value($contract, 'start_date'); ?>
+					<?php endif; ?>
+					</p>
+			</div>
+		</div>
+
+		<p>CDW OPTION (This is an optional insurance add-on that reduces the hirer’s financial liability- Excess/deductible should the vehicle be damaged or stolen) (CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.45,000, Standard Saloon- Kes.50,000, Mid-SUV- Kes. 75,000, SUV-Kes.100,000, Luxury SUV-Kes. 150,000).  DAILY CDW RATES- Small Saloon- Kes.250, Standard Saloon- Kes.500, Mid SUV- Kes. 750, SUV- Kes. 1,000, Luxury SUV- Kes. 1,500 
+		</p>
+		<div class="row">
+			<div class="col-6">
+				<p>Hirer's Signature: 
+					<?php if($contract['cdw'] == "true"): ?>
+						<img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img">
+					<?php endif; ?>
+				</p>
+			</div>
+			<div class="col-6">
+				<p>Date:
+					<?php if($contract['cdw'] == "true"): ?>
+						<?php show_value($contract, 'start_date'); ?></p>
+					<?php endif; ?>
+			</div>
+		</div>
+		<p>All cars are insured. But in all cases the first Ksh…………<?php $contract['cdw_vehicle_excess'] > 0 && show_numeric_value($contract, 'cdw_vehicle_excess'); ?>……. Excess & loss of use premium depending on the vehicle hired on every claim.</p>
+		<br>
+		<p><b>IMPORTANT</b></p>
 		<P> The insurance cover (s) aforesaid is available only if the terms and conditions contained herein and in the insurance policy are complied with failing with the hirer and the authorised driver shall be fully responsible for all damages and costs and shall fully indemnify the company in respect of any loss or damage suffered by the vehicle of the company or for any claims received by the company and all costs and expenses.</P>
 		<P><b>PAYMENT TERMS</b></P>
 		<P>7. Besides the deposit, full identifications and physical address of the hirer must be given and where required by the company an acceptable
