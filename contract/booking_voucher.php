@@ -55,6 +55,10 @@
               <p><b>Vehicle Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'total'); ?>/-</p>
             <?php endif; ?>
 
+            <?php if ($voucher['cdw_total'] > 0): ?>
+                <p><b>CDW Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'cdw_total'); ?>/- </p>
+            <?php endif; ?>
+            
             <p><b>Subtotal:</b><?php echo " "; ?>Ksh. <?php echo number_format($subtotal); ?>/- </p>
 
             <p><b>Start Date:</b><?php echo " "; ?><?php echo date("l jS \of F Y", $start_date); ?></p>

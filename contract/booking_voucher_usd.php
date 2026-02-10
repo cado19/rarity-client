@@ -4,25 +4,7 @@
     $req_url = "https://v6.exchangerate-api.com/v6/$apiKey/latest/KES";
 
     // fetch exchange rate data
-    // $response_json = file_get_contents($req_url);
-
-    $ch = curl_init($req_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // optional: timeout in seconds
-    $response_json = curl_exec($ch);
-
-    if (curl_errno($ch)) {
-        echo "cURL error: " . curl_error($ch);
-        exit;
-    }
-
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($http_code !== 200 || ! $response_json) {
-        echo "Failed to fetch exchange rate (HTTP $http_code)";
-        exit;
-    }
+    $response_json = file_get_contents($req_url);
 
     $page = "Voucher";
     include_once 'partials/client-header.php';
@@ -41,6 +23,7 @@
     $fuel_fee    = $voucher['fuel'];
     $daily_rate  = $voucher['daily_rate'];
     $custom_rate = $voucher['custom_rate'];
+    $cdw_total   = $voucher['cdw_total'];
     $total       = $voucher['total'];
 
     if ($voucher['driver_fee'] > 0) {
@@ -67,6 +50,7 @@
                 $fuel_fee_usd    = round($fuel_fee * $rate_usd, 2);
                 $daily_rate_usd  = round($daily_rate * $rate_usd, 2);
                 $custom_rate_usd = round($custom_rate * $rate_usd, 2);
+                $cdw_total_usd   = round($cdw_total * $rate_usd, 2);
                 $total_usd       = round($total * $rate_usd, 2);
                 $subtotal_usd    = round($subtotal * $rate_usd, 2);
 
@@ -111,6 +95,10 @@
             <?php if ($voucher['driver_fee'] > 0): ?>
               <p><b>Driver Fee:</b><?php echo " "; ?>$<?php echo $driver_fee_usd; ?>/-</p>
               <p><b>Vehicle Fee:</b><?php echo " "; ?>$<?php echo $total_usd; ?>/-</p>
+            <?php endif; ?>
+
+            <?php if ($voucher['cdw_total'] > 0): ?>
+                <p><b>CDW Fee:</b><?php echo " "; ?>$<?php echo $cdw_total_usd; ?>/-</p>
             <?php endif; ?>
 
             <p><b>Subtotal:</b><?php echo " "; ?>$<?php echo $subtotal_usd; ?>/- </p>
