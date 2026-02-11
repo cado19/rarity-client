@@ -2,7 +2,7 @@
     include_once 'partials/client-header.php';
     // include_once 'partials/content_start.php';
     if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = $_GET['id'];
     }
     $contract = contract($id);
     $created  = strtotime($contract['created_at']);
@@ -194,39 +194,39 @@ Traffic Laws and Rules and the provisions of the Highway code shall at all times
 		<P>b) Any breakdown or damage to the vehicle otherwise than by collision,</P>
 		<P>c) Injuries or loss to the hirer or driver or the passengers.</P>
 		<P> d) Burst tyres, stolen, lost spare wheel, damaged OR broken windscreen or glasses, damaged rims, tools (including jack & handle)</P>
-		<P>All cars are insured. But in all cases the first Ksh…………<?php $contract['cdw'] == "false" && show_numeric_value($contract, 'vehicle_excess'); ?>……. Excess premiums depending on the vehicle hired on every claim are the responsibility of the hirer. (NON-CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.100,000, Standard Saloon- Kes.150,000, Mid-SUV- 
+		<P>All cars are insured. But in all cases the first Ksh…………<?php $contract['cdw'] == "false" && show_numeric_value($contract, 'vehicle_excess'); ?>……. Excess premiums depending on the vehicle hired on every claim are the responsibility of the hirer. (NON-CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.100,000, Standard Saloon- Kes.150,000, Mid-SUV-
 		Kes. 250,000, SUV-Kes.400,000, Luxury SUV-Kes. 600,000). </P>
 
 		<div class="row">
 			<div class="col-6">
-				<p>Hirer's Signature: 
-					<?php if($contract['cdw'] == "false"): ?>
+				<p>Hirer's Signature:
+					<?php if ($contract['cdw'] == "false"): ?>
 						<img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img">
 					<?php endif; ?>
 				</p>
 			</div>
 			<div class="col-6">
 				<p>Date:
-					<?php if($contract['cdw'] == "false"): ?>
+					<?php if ($contract['cdw'] == "false"): ?>
 						<?php show_value($contract, 'start_date'); ?>
 					<?php endif; ?>
 					</p>
 			</div>
 		</div>
 
-		<p>CDW OPTION (This is an optional insurance add-on that reduces the hirer’s financial liability- Excess/deductible should the vehicle be damaged or stolen) (CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.45,000, Standard Saloon- Kes.50,000, Mid-SUV- Kes. 75,000, SUV-Kes.100,000, Luxury SUV-Kes. 150,000).  DAILY CDW RATES- Small Saloon- Kes.250, Standard Saloon- Kes.500, Mid SUV- Kes. 750, SUV- Kes. 1,000, Luxury SUV- Kes. 1,500 
+		<p class="text-primary">CDW OPTION (This is an optional insurance add-on that reduces the hirer’s financial liability- Excess/deductible should the vehicle be damaged or stolen) (CDW OPTION EXCESS/DEDUCTIBLE RATES- Small Saloons- Kes.45,000, Standard Saloon- Kes.50,000, Mid-SUV- Kes. 75,000, SUV-Kes.100,000, Luxury SUV-Kes. 150,000).  DAILY CDW RATES- Small Saloon- Kes.250, Standard Saloon- Kes.500, Mid SUV- Kes. 750, SUV- Kes. 1,000, Luxury SUV- Kes. 1,500
 		</p>
 		<div class="row">
 			<div class="col-6">
-				<p>Hirer's Signature: 
-					<?php if($contract['cdw'] == "true"): ?>
+				<p>Hirer's Signature:
+					<?php if ($contract['cdw'] == "true"): ?>
 						<img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img">
 					<?php endif; ?>
 				</p>
 			</div>
 			<div class="col-6">
 				<p>Date:
-					<?php if($contract['cdw'] == "true"): ?>
+					<?php if ($contract['cdw'] == "true"): ?>
 						<?php show_value($contract, 'start_date'); ?></p>
 					<?php endif; ?>
 			</div>

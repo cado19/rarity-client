@@ -166,6 +166,11 @@ table.shoping-cart-table tr td:last-child {
   width: 100px;
 }
 
+.signature-img{
+  height: 150px;
+  width: 150px;
+}
+
 
 #payment-details{
     border: 3px solid #000;
