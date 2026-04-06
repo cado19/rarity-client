@@ -3,24 +3,28 @@
     include_once 'partials/client-header.php';
     // include_once 'partials/content_start.php';
     if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = $_GET['id'];
     }
     $voucher    = booking_voucher_details($id);
     $created    = strtotime($voucher['created_at']);
     $start_date = strtotime($voucher['start_date']);
     $end_date   = strtotime($voucher['end_date']);
 
-    $subtotal = 0;
+    $ultimate_total = 0;
 
     if ($voucher['driver_fee'] > 0) {
-        $subtotal += $voucher['driver_fee'];
+    $ultimate_total += $voucher['driver_fee'];
     }
 
     if ($voucher['fuel'] > 0) {
-        $subtotal += $voucher['fuel'];
+    $ultimate_total += $voucher['fuel'];
     }
 
-    $subtotal += $voucher['total'];
+    if ($voucher['subtotal'] > 0) {
+    $ultimate_total += $voucher['subtotal'];
+    } else {
+    $ultimate_total += $voucher['total'];
+    }
 
 ?>
 
@@ -58,8 +62,13 @@
             <?php if ($voucher['cdw_total'] > 0): ?>
                 <p><b>CDW Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'cdw_total'); ?>/- </p>
             <?php endif; ?>
-            
-            <p><b>Subtotal:</b><?php echo " "; ?>Ksh. <?php echo number_format($subtotal); ?>/- </p>
+
+            <?php if ($voucher['vat'] > 0): ?>
+                <p><b>Booking Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'total'); ?>/- </p>
+                <p><b>VAT:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'vat'); ?>/- </p>
+            <?php endif; ?>
+
+            <p><b>Subtotal:</b><?php echo " "; ?>Ksh. <?php echo number_format($ultimate_total); ?>/- </p>
 
             <p><b>Start Date:</b><?php echo " "; ?><?php echo date("l jS \of F Y", $start_date); ?></p>
             <p><b>End Date:</b><?php echo " "; ?><?php echo date("l jS \of F Y", $end_date); ?> </p>
