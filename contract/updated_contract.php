@@ -218,7 +218,8 @@ Traffic Laws and Rules and the provisions of the Highway code shall at all times
 		</p>
 		<div class="row">
 			<div class="col-6">
-				<p>Hirer's Signature:
+				<p>
+					Hirer's Signature:
 					<?php if ($contract['cdw'] == "true"): ?>
 						<img src="contract/signatures/<?php echo $contract['signature']; ?>" alt="Signature" class="signature-img">
 					<?php endif; ?>
@@ -227,8 +228,9 @@ Traffic Laws and Rules and the provisions of the Highway code shall at all times
 			<div class="col-6">
 				<p>Date:
 					<?php if ($contract['cdw'] == "true"): ?>
-						<?php show_value($contract, 'start_date'); ?></p>
+						<?php show_value($contract, 'start_date'); ?>
 					<?php endif; ?>
+				</p>
 			</div>
 		</div>
 		<p>All cars are insured. But in all cases the first Ksh…………<?php $contract['cdw_vehicle_excess'] > 0 && show_numeric_value($contract, 'cdw_vehicle_excess'); ?>……. Excess & loss of use premium depending on the vehicle hired on every claim.</p>
