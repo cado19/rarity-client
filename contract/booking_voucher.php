@@ -13,17 +13,17 @@
     $ultimate_total = 0;
 
     if ($voucher['driver_fee'] > 0) {
-    $ultimate_total += $voucher['driver_fee'];
+        $ultimate_total += $voucher['driver_fee'];
     }
 
     if ($voucher['fuel'] > 0) {
-    $ultimate_total += $voucher['fuel'];
+        $ultimate_total += $voucher['fuel'];
     }
 
-    if ($voucher['subtotal'] > 0) {
-    $ultimate_total += $voucher['subtotal'];
+    if ($voucher['vat'] > 0) {
+        $ultimate_total += $voucher['total'];
     } else {
-    $ultimate_total += $voucher['total'];
+        $ultimate_total += $voucher['subtotal'];
     }
 
 ?>
@@ -64,7 +64,7 @@
             <?php endif; ?>
 
             <?php if ($voucher['vat'] > 0): ?>
-                <p><b>Booking Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'total'); ?>/- </p>
+                <p><b>Booking Fee:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'subtotal'); ?>/- </p>
                 <p><b>VAT:</b><?php echo " "; ?>Ksh. <?php show_numeric_value($voucher, 'vat'); ?>/- </p>
             <?php endif; ?>
 

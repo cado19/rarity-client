@@ -10,7 +10,7 @@
     include_once 'partials/client-header.php';
     // include_once 'partials/content_start.php';
     if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = $_GET['id'];
     }
     $voucher    = booking_voucher_details($id);
     $created    = strtotime($voucher['created_at']);
@@ -19,14 +19,14 @@
 
     $ultimate_total = 0;
 
-    $driver_fee     = $voucher['driver_fee'];
-    $fuel_fee       = $voucher['fuel'];
-    $daily_rate     = $voucher['daily_rate'];
-    $custom_rate    = $voucher['custom_rate'];
-    $cdw_total      = $voucher['cdw_total'];
-    $total          = $voucher['total'];
-    $subtotal       = $voucher['subtotal'];
-    $vat            = $voucher['vat'];
+    $driver_fee  = $voucher['driver_fee'];
+    $fuel_fee    = $voucher['fuel'];
+    $daily_rate  = $voucher['daily_rate'];
+    $custom_rate = $voucher['custom_rate'];
+    $cdw_total   = $voucher['cdw_total'];
+    $total       = $voucher['total'];
+    $subtotal    = $voucher['subtotal'];
+    $vat         = $voucher['vat'];
 
     if ($voucher['driver_fee'] > 0) {
         $ultimate_total += $voucher['driver_fee'];
@@ -36,10 +36,10 @@
         $ultimate_total += $voucher['fuel'];
     }
 
-    if ($voucher['subtotal'] > 0) {
-        $ultimate_total += $voucher['subtotal'];
-    } else {
+    if ($voucher['vat'] > 0) {
         $ultimate_total += $voucher['total'];
+    } else {
+        $ultimate_total += $voucher['subtotal'];
     }
 
     //convert values to usd
@@ -48,28 +48,28 @@
     // custom rate
     // daily rate
     if ($response_json !== false) {
-        try {
-            $response = json_decode($response_json);
-            if ($response->result === 'success') {
-                $rate_usd               = $response->conversion_rates->USD;
-                $driver_fee_usd         = round($driver_fee * $rate_usd, 2);
-                $fuel_fee_usd           = round($fuel_fee * $rate_usd, 2);
-                $daily_rate_usd         = round($daily_rate * $rate_usd, 2);
-                $custom_rate_usd        = round($custom_rate * $rate_usd, 2);
-                $cdw_total_usd          = round($cdw_total * $rate_usd, 2);
-                $total_usd              = round($total * $rate_usd, 2);
-                $ultimate_total_usd     = round($ultimate_total * $rate_usd, 2);
-                $subtotal_usd           = round($subtotal * $rate_usd, 2);
-                $vat_usd                = round($vat * $rate_usd, 2);
+    try {
+        $response = json_decode($response_json);
+        if ($response->result === 'success') {
+            $rate_usd           = $response->conversion_rates->USD;
+            $driver_fee_usd     = round($driver_fee * $rate_usd, 2);
+            $fuel_fee_usd       = round($fuel_fee * $rate_usd, 2);
+            $daily_rate_usd     = round($daily_rate * $rate_usd, 2);
+            $custom_rate_usd    = round($custom_rate * $rate_usd, 2);
+            $cdw_total_usd      = round($cdw_total * $rate_usd, 2);
+            $total_usd          = round($total * $rate_usd, 2);
+            $ultimate_total_usd = round($ultimate_total * $rate_usd, 2);
+            $subtotal_usd       = round($subtotal * $rate_usd, 2);
+            $vat_usd            = round($vat * $rate_usd, 2);
 
-            }
-        } catch (Exception $e) {
-            echo "Error parsing exchange rate data";
-            exit;
         }
-    } else {
-        echo "Failed to fetch exchange rate";
+    } catch (Exception $e) {
+        echo "Error parsing exchange rate data";
         exit;
+    }
+    } else {
+    echo "Failed to fetch exchange rate";
+    exit;
     }
 
 ?>
@@ -110,7 +110,7 @@
             <?php endif; ?>
 
             <?php if ($voucher['vat'] > 0): ?>
-                <p><b>Booking Fee:</b><?php echo " "; ?>Ksh. <?php echo $total_usd; ?>/- </p>
+                <p><b>Booking Fee:</b><?php echo " "; ?>Ksh. <?php echo $subtotal_usd; ?>/- </p>
                 <p><b>VAT:</b><?php echo " "; ?>Ksh. <?php echo $vat_usd; ?>/- </p>
             <?php endif; ?>
 
