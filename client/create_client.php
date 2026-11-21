@@ -100,7 +100,7 @@ try {
 	            last_name,
 	            email,
 
-	            country,
+
 	            date_of_birth,
 
 	            id_type,
@@ -121,7 +121,7 @@ try {
 	        )
 	        VALUES
 	        (
-	            ?,?,?,?,?,?,
+	            ?,?,?,?,?,
 	            ?,?,?,?,?,?,
 	            ?,?,?,?
 	        )
@@ -134,7 +134,6 @@ try {
         $_POST['last_name'],
         $_POST['email'],
 
-        $_POST['country'],
         $_POST['date_of_birth'],
 
         $_POST['id_type'],
@@ -175,7 +174,7 @@ try {
         urlencode("Registration failed. Please try again.");
 
     header(
-        "Location: index.php?page=client/new&err_msg={$err_msg}"
+        "Location: index.php?page=client/new_client&err_msg={$err_msg}"
     );
 
     exit;
