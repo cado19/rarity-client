@@ -1,4 +1,5 @@
 <?php
+    // client/new.php
     $page = "Sign Up";
     include_once 'partials/client-header.php';
 

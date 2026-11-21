@@ -1,11 +1,12 @@
 <?php
-    // THIS PAGE ALLOWS A USER TO TAKE A SELFIE FOR CLIENT'S PROFILE IMAGE
+    // THIS PAGE ALLOWS A USER TO TAKE A SELFIE FOR CLIENT'S ID IMAGE
+    // client/id_form.php
     $page = "Upload ID images";
     include_once 'partials/client-header.php';
 
     if (isset($_GET['id'])) {
-        $id       = $_GET['id'];
-        $customer = get_customer($id);
+    $id       = $_GET['id'];
+    $customer = get_customer($id);
     }
 ?>
 

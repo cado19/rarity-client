@@ -1,11 +1,12 @@
 
 <?php
     // THIS PAGE ALLOWS A USER TO TAKE A SELFIE FOR CLIENT'S PROFILE IMAGE
+    // client/profile_form.php
     $page = "Capture Profile Picture";
     include_once 'partials/client-header.php';
 
     if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = $_GET['id'];
     }
 ?>
 

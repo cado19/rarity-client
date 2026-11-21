@@ -1,4 +1,5 @@
 <?php
+// client/profile_process.php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
     if (empty($_POST['image'])) {

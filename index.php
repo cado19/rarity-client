@@ -1,4 +1,5 @@
 <?php
+// index.php
 include_once "config/functions.php";
 
 require 'vendor/autoload.php';

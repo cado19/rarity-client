@@ -1,6 +1,7 @@
 <?php
 
 // THIS SCRIPT WILL PROCESS ID UPLOAD
+// client/id_process.php
 
 // PROCESS THE FORM
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
