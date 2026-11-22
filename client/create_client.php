@@ -15,7 +15,7 @@ try {
     |--------------------------------------------------------------------------
     */
 
-    $base_url = "https://www.raritycars.com/files/customers";
+    $base_url = "../../html/files/customers";
 
     $profileImage = null;
     $idFrontImage = null;
